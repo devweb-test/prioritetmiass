@@ -1,5 +1,9 @@
 (function(){
 'use strict';
+const categoryPath='catalog/pozharnye-avtocisterny/index.html';
+if(window.OFFLINE_DATA?.search&&!window.OFFLINE_DATA.search.some(p=>p.path===categoryPath)){
+ window.OFFLINE_DATA.search.push({title:'Пожарные автоцистерны — ПРИОРИТЕТ',path:categoryPath,text:'Каталог пожарных автоцистерн. Шасси УРАЛ, КАМАЗ, JAC, AMT, ГАЗ, МАЗ. Объём цистерны, насос, боевой расчёт. Подбор и комплектация.'});
+}
 window.offlineMapFallback=function(){
  const map=document.getElementById('map');if(!map)return;
  let note=map.querySelector('.offline-map-note');if(!note){note=document.createElement('div');note.className='offline-map-note';note.innerHTML='<p>Интерактивная карта сейчас недоступна.<br>Миасс, ул. 8 Марта, 4</p><a href="https://yandex.ru/maps/?text=Миасс%2C%208%20Марта%2C%204" target="_blank" rel="noopener">Открыть карту</a><button type="button">Повторить загрузку</button>';map.appendChild(note);note.querySelector('button').onclick=()=>location.reload();}note.hidden=false;return note;

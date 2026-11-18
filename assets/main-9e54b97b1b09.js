@@ -288,7 +288,8 @@ jQuery(function($) {
 			});
 		}
         
-        $('.goods-categories-container .grid_category_item a').click(function() {
+        $('.goods-categories-container .grid_category_item a').click(function(event) {
+            if (this.getAttribute('href') !== '#') return;
             event.preventDefault();
             var curr_cat = $(this).parent(".grid_category_item").attr("data-cat");
             showCurCat(curr_cat, 0);
@@ -712,7 +713,8 @@ jQuery(function($) {
 				}
 			});
 			
-			$('.catalog_page_choose_car_menu .grid_category_item a').click(function() {
+			$('.catalog_page_choose_car_menu .grid_category_item a').click(function(event) {
+				if (this.getAttribute('href') !== '#') return;
 				event.preventDefault();
 				var curr_cat = $(this).parent(".grid_category_item").attr("data-cat");
 				$('.products_panel.products_panel_fixed .red svg').css('transform', 'rotate(0)');
